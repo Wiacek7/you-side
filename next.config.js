@@ -1,19 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ['@orbisclub/components'], // Fix transpilation issues
   images: {
     unoptimized: true,
-    domains: [
-      'orbis.mypinata.cloud',
-      'ipfs.io',
-      'gateway.ipfs.io'
-    ]
+    domains: ['orbis.mypinata.cloud', 'ipfs.io', 'gateway.ipfs.io']
   },
-  // Modern Next.js deployment configuration
-  output: 'standalone',
-  
-  // Add security headers
-  async headers() {
+  headers() {
     return [
       {
         source: '/:path*',
@@ -26,6 +19,6 @@ const nextConfig = {
       }
     ];
   }
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
